@@ -28,7 +28,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url) 
 			if html and code == 405:
 				self.print_.aprint("XML-RPC Interface available under: {}".format(uri))
-		except Exception,e:
+		except Exception as e:
 			pass 
 
 	def robots(self):
@@ -40,7 +40,7 @@ class WPGeneric:
 			if html and code == 200:
 				self.print_.aprint("Robots available under: {}".format(uri))
 				print "\r\n%s\n"%(html)
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def sitemap(self):
@@ -51,7 +51,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url)
 			if html and code == 200:
 				self.print_.aprint("Sitemap available under: {}".format(uri))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def readme(self):
@@ -62,7 +62,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url)
 			if html and code == 200:
 				self.print_.aprint("Readme available under: {}".format(uri))
-		except Exception,e:
+		except Exception as e:
 			pass 
 
 	def fullpathdisc(self):
@@ -74,7 +74,7 @@ class WPGeneric:
 			if html and code == 200:
 				if re.search('Fatal error',html):
 					self.print_.bprint("Full Path Disclosure: {}".format(uri))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def version(self):
@@ -91,7 +91,7 @@ class WPGeneric:
 				self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 				# Check wordpress version vulns
 				self.wpvulns(vers)
-		except Exception,e:
+		except Exception as e:
 			try:
 				# check wordpress version via feed
 				url = self.check_.check(self.url,"feed")
@@ -103,7 +103,7 @@ class WPGeneric:
 					self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 					# Check wordpress version vulns
 					self.wpvulns(vers)
-			except Exception,e:
+			except Exception as e:
 				try:
 					# check wordpress version via feed/atom
 					url = self.check_.check(self.url,"/feed/atom")
@@ -115,7 +115,7 @@ class WPGeneric:
 						self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 						# Check wordpress version vulns
 						self.wpvulns(vers)
-				except Exception,e:
+				except Exception as e:
 					try:
 						# check wordpress version via feed/rdf
 						url = self.check_.check(self.url,"feed/rdf")
@@ -127,7 +127,7 @@ class WPGeneric:
 							self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 							# Check wordpress version vulns
 							self.wpvulns(vers)
-					except Exception,e:
+					except Exception as e:
 						try:
 							# check wordpress version via comments/feed
 							url = self.check_.check(self.url,"comments/feed")
@@ -139,7 +139,7 @@ class WPGeneric:
 								self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 								# Check wordpress version vulns
 								self.wpvulns(vers)
-						except Exception,e:
+						except Exception as e:
 							try:
 								# check wordpress version via readme.html file
 								url = self.check_.check(self.url,"readme.html")
@@ -151,7 +151,7 @@ class WPGeneric:
 									self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 									# Check wordpress version vulns
 									self.wpvulns(vers)
-							except Exception,e:
+							except Exception as e:
 								try:
 									# check wordpress version via meta generator
 									url = self.check_.check(self.url,"")
@@ -163,7 +163,7 @@ class WPGeneric:
 										self.print_.aprint("Running WordPress version: %s"%(vers[0]))
 										# Check wordpress version vulns
 										self.wpvulns(vers)
-								except Exception,e:
+								except Exception as e:
 									self.print_.aprint("Not found run WordPress version")
 
 	def headers(self):
@@ -212,7 +212,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url)
 			if html and code == 200:
 				self.print_.aprint("wp-config available under: %s"%(uri))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def wpconfigbackup(self):
@@ -225,7 +225,7 @@ class WPGeneric:
 				html,uri,code,info = self.req.Send(url)
 				if html and code == 200:
 					self.print_.bprint("wp-config backup available under: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass 
 
 	def wpconfigsm(self):
@@ -236,7 +236,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url)
 			if html and code == 500:
 				self.print_.bprint("wp-config-sample available under: %s"%(uri))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def dirlisting(self):
@@ -249,7 +249,7 @@ class WPGeneric:
 				html,uri,code,info = self.req.Send(url)
 				if re.search("Index of",html) and code == 200:
 					self.print_.bprint("Dir {} listing enabled under: {}".format(x,uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def license(self):
@@ -262,7 +262,7 @@ class WPGeneric:
 				html,uri,code,info = self.req.Send(url)
 				if html and code == 200:
 					self.print_.aprint("License available under: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def pingback(self):
@@ -277,7 +277,7 @@ class WPGeneric:
 			html,uri,code,info = self.req.Send(url,method="POST",payload=payload)
 			if re.search("<name>16</name>",html) and code==200:
 				self.print_.bprint("Website vulnerable to XML-RPC Pingback Force Vulneravility")
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def wpvulns(self,ver):
@@ -308,7 +308,7 @@ class WPGeneric:
 			else:
 				self.print_.eprint("Not found vulnerabilities")
 				print 
-		except Exception,e:
+		except Exception as e:
 			print e 
 
 	def init(self):
@@ -325,4 +325,3 @@ class WPGeneric:
 		self.fullpathdisc()
 		self.headers()
 		self.version()
-		

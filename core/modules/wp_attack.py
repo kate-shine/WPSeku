@@ -112,21 +112,21 @@ class WPAttack:
 			for item in params.items():
 				for x in file:
 					param[item[0]]=item[1].replace(item[1],x[0])
-					# encode params 
+					# encode params
 					enparam = urllib.urlencode(param)
-					# check url 
+					# check url
 					url = self.check_.check(self.url,"")
 					# return data,url,code and headers
 					html,uri,code,info = self.req.Send(url,self.method,enparam)
-					# return from db error 
+					# return from db error
 					data = self.dberror(html)
 					if data != None:
 						print "%s[%s][%s][%s]%s %s"%(wp_colors.WPColors().red(1),code,self.method,data,wp_colors.WPColors().end(),uri)
 					else:
 						print "%s[%s][%s][Not vuln]%s %s"%(wp_colors.WPColors().green(1),code,self.method,wp_colors.WPColors().end(),uri)
-					# return original data 
+					# return original data
 					param[item[0]] = item[1].replace(x[0],item[1])
-		except Exception,err:
+		except Exception as e:
 			pass
 		sys.exit()
 
@@ -156,6 +156,6 @@ class WPAttack:
 					else:
 						print "%s[%s][%s][Not Vuln]%s %s"%(wp_colors.WPColors().green(1),code,self.method,wp_colors.WPColors().end(),uri)
 					param[item[0]] = item[1].replace(x[0],item[1])
-		except Exception,err:
+		except Exception as e:
 			pass
 		sys.exit()

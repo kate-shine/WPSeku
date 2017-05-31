@@ -102,7 +102,7 @@ class WPSeku(object):
 		try:
 			opts,args = getopt.getopt(self.kwargs,"t:xsl=:b:q:u:w:m:p:a:c:r:h:",["target=","xss","sql","lfi","brute=",
 				"query=","user=","wordlist=","method=","proxy=","agent=","cookie=","redirect=","help","update"])
-		except getopt.error,e: 
+		except getopt.error as e:
 			self.Usage()
 		# All opts
 		for opt,arg in opts:

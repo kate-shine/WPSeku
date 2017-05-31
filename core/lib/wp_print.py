@@ -17,7 +17,7 @@ class WPPrint:
 	g = wp_colors.WPColors().green(1) # green
 	ng = wp_colors.WPColors().green(0) # normal green
 
- 	def aprint(self,string,flag="##"):
+	def aprint(self,string,flag="##"):
 		# flag = green 
 		print u"{}{}{} {}{}{}".format(self.g,flag,self.e,self.nw,string,self.e)
 

@@ -46,7 +46,7 @@ class WPBrute:
 				####
 				elif re.search('<name>isAdmin</name><value><boolean>1</boolean>',html):
 					self.print_.dprint("Valid ADMIN Credentials: \"%s\" - \"%s\""%(self.user,pwd.split("\n")[0]))
-			except Exception,e:
+			except Exception as e:
 				pass
 		sys.exit()
 
@@ -77,7 +77,7 @@ class WPBrute:
 				#######
 				if re.search('dashboard',html,re.I):
 					sys.exit(self.print_.aprint("Valid Credentials: \"%s\" - \"%s\""%(self.user,pwd.split("\n")[0])))
-			except Exception,e:
+			except Exception as e:
 				pass
 		sys.exit()
 

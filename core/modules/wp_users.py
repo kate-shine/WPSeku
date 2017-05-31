@@ -30,7 +30,7 @@ class WPUser:
 				user = json.loads(html,"utf-8")
 				for x in range(len(user)):
 					self.users.append(user[x]["name"])
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def wpauthor(self):
@@ -47,7 +47,7 @@ class WPUser:
 					self.users.extend(user)
 				if user_:
 					self.users.extend(user_)
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def wpfeed(self):
@@ -60,7 +60,7 @@ class WPUser:
 			user = re.findall('<dc:creator><!\[CDATA\[(.+?)\]\]></dc:creator>',html)
 			if user:
 				self.users.extend(user)
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def init(self):

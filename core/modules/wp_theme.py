@@ -46,7 +46,7 @@ class WPTheme:
 					self.thvulns(new[x])
 			else:
 				self.print_.eprint("Not found themes!")
-		except Exception,e:
+		except Exception as e:
 			pass 
 
 	def info(self,theme):
@@ -62,7 +62,7 @@ class WPTheme:
 				self.print_.dprint("Author: %s"%(re.findall("Author: (\S+)",html)[0]))
 				self.print_.dprint("Author URI: %s"%(re.findall("Author URI: (\S+)",html)[0]))
 				self.print_.dprint("Version: %s"%(re.findall("Version: (\d+.\d+[.\d+]*)",html)[0]))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def readme(self,theme):
@@ -76,7 +76,7 @@ class WPTheme:
 				html,uri,code,info = self.req.Send(url)
 				if html and code == 200:
 					self.print_.dprint("Readme: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass 
 
 	def changelog(self,theme):
@@ -90,7 +90,7 @@ class WPTheme:
 				html,uri,code,info = self.req.Send(url)
 				if html and code == 200:
 					self.print_.dprint("Changelog: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def fullpathdisc(self,theme):
@@ -106,7 +106,7 @@ class WPTheme:
 				if html and code==200:
 					if re.search("Faral error",html):
 						self.print_.eprint("Full Path Disclosure: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def style(self,theme):
@@ -118,7 +118,7 @@ class WPTheme:
 			html,uri,code,info = self.req.Send(url)
 			if html and code == 200:
 				self.print_.dprint("Style: %s"%(uri))
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def thvulns(self,theme):
@@ -140,6 +140,6 @@ class WPTheme:
 					self.print_.eprint("Not found vulnerabilities")
 			else:
 				self.print_.eprint("Not found vulnerabilities")
-		except Exception,e:
+		except Exception as e:
 			pass
 

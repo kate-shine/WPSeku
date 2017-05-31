@@ -43,7 +43,7 @@ class WPPlugin:
 					self.plvulns(nplugin[c])
 			else:
 				self.print_.eprint("Not found plugins!")
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def vers(self,plugin):
@@ -62,7 +62,7 @@ class WPPlugin:
 				return new[0]
 			else:
 				return None
-		except Exception,e:
+		except Exception as e:
 			pass
 
 	def readme(self,plugin):
@@ -75,7 +75,7 @@ class WPPlugin:
 				html,uri,code,info = self.req.Send(url)
 				if html and code == 200:
 					self.print_.dprint("Readme: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def changelog(self,plugin):
@@ -88,7 +88,7 @@ class WPPlugin:
 				html,uri,code,info = self.req.Send(url)
 				if html and code==200:
 					self.print_.dprint("Changelog: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def dirlisting(self,plugin):
@@ -102,7 +102,7 @@ class WPPlugin:
 				html,uri,code,info = self.req.Send(url)
 				if re.search("Index of",html) and code==200:
 					self.print_.eprint("Listing: %s"%(uri))
-			except Exception,e:
+			except Exception as e:
 				pass
 
 	def plvulns(self,plugin):
@@ -127,5 +127,5 @@ class WPPlugin:
 			else:
 				self.print_.eprint("Not found vulnerabilities")
 				print ""
-		except Exception,e:
+		except Exception as e:
 			pass
